@@ -50,13 +50,13 @@
     <nb-card-footer class="menu_buttons">
         <div class="row">
             <div class="col col-sm-6">
-                <button *ngIf="!isAlterPass && !isNew" nbButton status="info" size="small" (click)="alterPass()">
+                <button *ngIf="!isAlterPass && !isNew" nbButton status="info" size="small" class="form-control" (click)="alterPass()">
                     <nb-icon icon="settings-2-outline"></nb-icon> Alterar senha...
                 </button>
             </div>
             <div class="col col-sm-3">
                 <!-- Botão salvar habilitado apenas quando todos os campos estiverem preenchidos -->
-                <button nbButton status="success" size="small" class="form-control"(click)="save()"
+                <button nbButton status="success" size="small" class="form-control" (click)="save()"
                     [disabled]="!user.name || (isNew && !user.email) || (isNew && !password) || (isNew && password != passwordConfirm)">
                     <i class="nb-checkmark"></i> Salvar
                 </button>
