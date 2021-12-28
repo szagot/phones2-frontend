@@ -31,7 +31,7 @@ const routes: Routes = [{
 
     {
       path: '',
-      redirectTo: 'users',
+      redirectTo: 'phones/preaching',
       pathMatch: 'full',
     },
     {

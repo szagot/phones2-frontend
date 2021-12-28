@@ -13,12 +13,12 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Campo',
     home: true,
-    icon: 'email-outline',
+    icon: 'phone-call-outline',
     link: '/pages/phones/preaching',
   },
   {
     title: 'Revisitas',
-    icon: 'bar-chart-outline',
+    icon: 'calendar-outline',
     link: '/pages/phones/revisits',
   },
 ];
