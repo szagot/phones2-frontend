@@ -2,9 +2,8 @@
     <div class="header-container">
         <div class="logo-container">
             <a href="#" (click)="toggleSidebar()" class="sidebar-toggle">
-                <img src="assets/intro/datacore-logo.png" alt="Logo Datacore">
+                <nb-icon icon="menu"></nb-icon>
             </a>
-            <span class="logo">Disparo de Emails</span>
         </div>
     </div>
 
@@ -21,7 +20,7 @@
         </a>
         <nb-actions size="small" class="name">
             <nb-action class="user-action">
-                <nb-user [nbContextMenu]="userMenu" [name]="user?.name" picture="/assets/images/user.png"></nb-user>
+                <nb-user [nbContextMenu]="userMenu" [name]="user?.name" picture="false"></nb-user>
             </nb-action>
         </nb-actions>
     </div>

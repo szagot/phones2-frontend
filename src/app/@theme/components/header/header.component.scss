@@ -10,8 +10,7 @@
   .logo-container {
     display: flex;
     align-items: center;
-    // width: calc(#{nb-theme(sidebar-width)} - #{nb-theme(header-padding)});
-    width: 390px;
+    width: 60px;
   }
 
   nb-action {
@@ -46,7 +45,7 @@
     .sidebar-toggle {
       display: block;
       text-align: center;
-      padding: 0 0 0 20px;
+      padding: 0 0 0 10px;
       text-decoration: none;
       color: nb-theme(text-hint-color);
 
