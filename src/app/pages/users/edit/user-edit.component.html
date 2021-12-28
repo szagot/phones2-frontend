@@ -29,7 +29,8 @@
                     <option [ngValue]="false">Usuário</option>
                     <option [ngValue]="true">Administrador</option>
                 </select>
-                <input type="text" value="{{ user.isAdmin ? 'Administrador' : 'Usuário'}}" class="form-control" disabled *ngIf="me.id == user.id">
+                <input type="text" value="{{ user.isAdmin ? 'Administrador' : 'Usuário'}}" class="form-control" disabled
+                    *ngIf="me.id == user.id">
             </div>
         </div>
         <div *ngIf="isAlterPass || isNew" class="row">
@@ -47,15 +48,23 @@
 
     <!-- Rodapé da página com o botão de salvamento -->
     <nb-card-footer class="menu_buttons">
-        <button *ngIf="!isAlterPass && !isNew" nbButton status="info" (click)="alterPass()">
-            <nb-icon icon="settings-2-outline"></nb-icon> Alterar senha...
-        </button>
-        <div class="float-right">
-            <!-- Botão salvar habilitado apenas quando todos os campos estiverem preenchidos -->
-            <button nbButton status="success" (click)="save()" [disabled]="!user.name || (isNew && !user.email) || (isNew && !password) || (isNew && password != passwordConfirm)">
-                <i class="nb-checkmark"></i> Salvar
-            </button>
-            <button nbButton status="danger" (click)="back()"><i class="nb-close"></i> Cancelar</button>
+        <div class="row">
+            <div class="col col-sm-6">
+                <button *ngIf="!isAlterPass && !isNew" nbButton status="info" size="small" (click)="alterPass()">
+                    <nb-icon icon="settings-2-outline"></nb-icon> Alterar senha...
+                </button>
+            </div>
+            <div class="col col-sm-3">
+                <!-- Botão salvar habilitado apenas quando todos os campos estiverem preenchidos -->
+                <button nbButton status="success" size="small" class="form-control"(click)="save()"
+                    [disabled]="!user.name || (isNew && !user.email) || (isNew && !password) || (isNew && password != passwordConfirm)">
+                    <i class="nb-checkmark"></i> Salvar
+                </button>
+            </div>
+            <div class="col col-sm-3">
+                <button nbButton status="danger" size="small" class="form-control" (click)="back()"><i class="nb-close"></i>
+                    Cancelar</button>
+            </div>
         </div>
     </nb-card-footer>
 </nb-card>
