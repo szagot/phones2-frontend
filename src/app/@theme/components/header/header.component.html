@@ -1,0 +1,28 @@
+<div class="h-menu menu-sidebar gradient-right">
+    <div class="header-container">
+        <div class="logo-container">
+            <a href="#" (click)="toggleSidebar()" class="sidebar-toggle">
+                <img src="assets/intro/datacore-logo.png" alt="Logo Datacore">
+            </a>
+            <span class="logo">Disparo de Emails</span>
+        </div>
+    </div>
+
+    <div class="search" *ngIf="getSearchService().active">
+        <div class="form-block error">
+            <nb-icon icon="search"></nb-icon>
+            <input class="input radius-5" type="text" placeholder="{{getSearchService().placeholder}}" [value]="getSearchService().search" (input)="getSearchValue($event)">
+        </div>
+    </div>
+
+    <div class="header-container user">
+        <a (click)="navigateHelp()" href="#" class="help">
+            <nb-icon icon="question-mark-circle"></nb-icon>
+        </a>
+        <nb-actions size="small" class="name">
+            <nb-action class="user-action">
+                <nb-user [nbContextMenu]="userMenu" [name]="user?.name" picture="/assets/images/user.png"></nb-user>
+            </nb-action>
+        </nb-actions>
+    </div>
+</div>

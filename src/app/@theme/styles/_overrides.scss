@@ -1,0 +1,413 @@
+@import './themes';
+@import './designsytem.css';
+@mixin nb-overrides() {
+    nb-select.size-medium button {
+        padding: 0.4375rem 2.2rem 0.4375rem 1.125rem !important;
+        nb-icon {
+            right: 0.41rem !important;
+        }
+    }
+    // Header
+    ngx-header {
+        .user-picture {
+            display: none;
+        }
+    }
+    // Cards
+    nb-card {
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+    // Login
+    .login-content {
+        .menu-sidebar,
+        nb-layout-header {
+            display: none;
+        }
+        .layout-container {
+            padding-top: 0 !important;
+        }
+        .content {
+            margin-left: 0 !important;
+        }
+        nb-layout-column {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ngx-login {
+                width: 600px;
+                max-width: 100%;
+            }
+        }
+    }
+    // Help
+    .markdown {
+        img {
+            display: block;
+            width: 50%;
+            border: 1px solid nb-theme(border-theme-color);
+            border-radius: 0.375rem;
+            transition: width 0.3s ease;
+            cursor: pointer;
+            &:active {
+                width: 100%;
+            }
+        }
+        hr {
+            border-color: nb-theme(border-theme-color);
+            margin: 50px 0 30px;
+            opacity: 0.3;
+            border-style: dotted;
+        }
+        p {
+            margin: 1rem 0 2rem;
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+        ul {
+            display: block;
+            margin: -20px 0 20px !important;
+        }
+        li {
+            display: list-item !important;
+            list-style: circle !important;
+            margin: 10px 15px !important;
+            padding-left: 5px !important;
+        }
+        h1,
+        h2 {
+            margin: 2rem 0;
+        }
+        h1 {
+            margin-top: 0;
+        }
+        blockquote {
+            border-left: 5px solid nb-theme(border-theme-color);
+            padding: 10px 15px;
+            p {
+                margin: 0 !important;
+                font-size: 0.8rem !important;
+            }
+        }
+    }
+    // Dialogs
+    .overlay-backdrop {
+        background: rgba(0, 0, 0, 0.8) !important;
+    }
+    nb-dialog-container {
+        // SMS Preview
+        .cellphone {
+            max-width: 350px;
+            border-radius: 20px;
+            box-shadow: none !important;
+            nb-card-header {
+                padding: 0;
+                height: 40px;
+                position: relative;
+                * {
+                    display: none;
+                }
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: calc(50% - 4px);
+                    left: calc(50% - 60px);
+                    background: #222;
+                    border-radius: 16px;
+                    width: 120px;
+                    height: 8px;
+                }
+            }
+            nb-card-footer {
+                text-align: center;
+                button {
+                    border-radius: 30% !important;
+                    margin: 0 auto;
+                }
+            }
+            nb-card-body {
+                min-height: 450px;
+                background: nb-theme(slide-out-background);
+                p {
+                    position: relative;
+                    border-radius: 15px;
+                    border-top-left-radius: 0;
+                    padding: 10px;
+                    padding-left: 15px;
+                    width: 75%;
+                    margin: 10px 0 0 10px;
+                    background-color: #007bff;
+                    color: #f4f4f4;
+                    opacity: 0.8;
+                    text-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        background-color: transparent;
+                        top: 0;
+                        left: -10px;
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid #007bff;
+                    }
+                    &::selection {
+                        background: #f4f4f4;
+                        color: #007bff;
+                    }
+                }
+            }
+        }
+        // SMS Preview (com imagem)
+        .cellphone-image {
+            position: fixed;
+            bottom: 0;
+            left: calc(50% - 240px);
+            width: 480px;
+            height: 710px;
+            background: transparent url('/assets/images/cellphone.png') no-repeat !important;
+            border: 0;
+            margin: 0;
+            box-shadow: none !important;
+            nb-card-body {
+                position: absolute;
+                top: 75px;
+                left: 80px;
+                width: 240px;
+                height: 410px;
+                p {
+                    position: relative;
+                    border-radius: 10px;
+                    border-top-left-radius: 0;
+                    padding: 8px 12px;
+                    width: 85%;
+                    margin: 5px 0 0 5px;
+                    background-color: #007bff;
+                    color: #f4f4f4;
+                    font-size: 0.8rem;
+                    line-height: 1.1rem;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        background-color: transparent;
+                        top: 0;
+                        left: -10px;
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid #007bff;
+                    }
+                    &::selection {
+                        background: #f4f4f4;
+                        color: #007bff;
+                    }
+                }
+            }
+            nb-card-header {
+                display: none;
+            }
+            nb-card-footer {
+                border: 0 none;
+                padding: 0;
+                margin: 0;
+                button {
+                    position: absolute;
+                    width: 230px;
+                    bottom: 166px;
+                    left: 88px;
+                    opacity: 0;
+                    padding: 15px !important;
+                }
+            }
+        }
+        // SMS Preview (com imagem sem as mãos)
+        .cellphone-image-nohands {
+            position: fixed;
+            top: calc(50% - 355px);
+            left: calc(50% - 240px);
+            width: 480px;
+            height: 710px;
+            background: transparent url('/assets/images/cellphone-nohands.png') no-repeat !important;
+            border: 0;
+            margin: 0;
+            box-shadow: none !important;
+            nb-card-body {
+                position: absolute;
+                top: 110px;
+                left: 110px;
+                width: 250px;
+                height: 445px;
+                p {
+                    position: relative;
+                    border-radius: 10px;
+                    border-top-left-radius: 0;
+                    padding: 8px 12px;
+                    width: 80%;
+                    margin-top: 5px;
+                    background-color: #007bff;
+                    color: #f4f4f4;
+                    font-size: 0.8rem;
+                    line-height: 1.1rem;
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        background-color: transparent;
+                        top: 0;
+                        left: -10px;
+                        width: 0;
+                        height: 0;
+                        border-left: 10px solid transparent;
+                        border-right: 10px solid transparent;
+                        border-top: 10px solid #007bff;
+                    }
+                    &::selection {
+                        background: #f4f4f4;
+                        color: #007bff;
+                    }
+                }
+            }
+            nb-card-header {
+                display: none;
+            }
+            nb-card-footer {
+                border: 0 none;
+                padding: 0;
+                margin: 0;
+                button {
+                    position: absolute;
+                    bottom: 96px;
+                    left: 208px;
+                    opacity: 0;
+                    padding: 15px !important;
+                }
+            }
+        }
+    }
+    nb-toast {
+        .message {
+            word-break: break-word;
+        }
+    }
+    // buttons
+    button:focus:not(:hover):not(:active) {
+        box-shadow: none !important;
+    }
+    // Smart Tables
+    nb-card-header {
+        nb-icon {
+            float: left;
+            font-size: 26px;
+            margin-right: 5px;
+        }
+    }
+    ngx-smart-table {
+        ng2-smart-table {
+            &.hidden-first {
+                th:first-child,
+                td:first-child {
+                    display: none;
+                }
+            }
+            .ng2-smart-actions {
+                height: auto !important;
+            }
+            ng2-st-tbody-custom {
+                display: flex;
+                height: 100%;
+            }
+            tr:nth-child(2n).awaiting {
+                background: nb-theme(background-tables-waiting-one);
+            }
+            tr:nth-child(2n).reproved {
+                background: nb-theme(background-tables-reproved-one);
+            }
+            tr {
+                // Força a quebra de linhas em situações de URL ou Path
+                .description {
+                    word-break: break-all;
+                }
+                // Proprio usuário / Ou sem permissão pra remover
+                &.me,
+                &.not_removal {
+                    .delete {
+                        display: none;
+                    }
+                }
+                // Sem permissão pra editar
+                &.not_editor {
+                    .edit {
+                        display: none;
+                    }
+                }
+                // Sem permissão pra shotsar
+                &.not_shots {
+                    .test {
+                        display: none;
+                    }
+                    .aprove {
+                        display: none;
+                    }
+                }
+                &.reproved {
+                    // Não permite a edição de templates em aprovação
+                    .aprove {
+                        display: none;
+                    }
+                }
+                &.approval {
+                    // Não permite a aprovação de templates já aprovados
+                    .aprove {
+                        display: none;
+                    }
+                    .edit {
+                        display: none;
+                    }
+                }
+                a.ng2-smart-action {
+                    width: auto !important;
+                    border-right: 0 none !important;
+                    i {
+                        margin: 0 0 0 5px;
+                    }
+                }
+            }
+        }
+        .form-control.search {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    }
+    // CKEditor
+    .cke_dialog {
+        position: absolute !important;
+        top: calc(50% - 240px) !important;
+        left: calc(50% - 172px) !important;
+        .cke_dialog_contents_body {
+            min-width: 550px;
+        }
+        .cke_dialog_page_contents {
+            min-height: 240px;
+        }
+        .cke_dialog_tabs {
+            display: none;
+        }
+        .cke_dialog_ui_input_text,
+        .cke_dialog_ui_input_select {
+            height: auto !important;
+        }
+        .cke_dialog_footer_buttons {
+            margin: 5px !important;
+        }
+        .cke_resizer_ltr {
+            display: none !important;
+        }
+    }
+}
+
+ .nb-theme-default .color-default {
+     color: #616161 !important;
+ }

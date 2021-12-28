@@ -1,0 +1,111 @@
+.progress {
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+  display: flex;
+  font-size: 1.2rem;
+  height: 2rem;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0.5rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  i {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+}
+
+// Específico do conteúdo obtido do HTML
+.html {
+  tr tr * {
+    transition: all 0.3s ease;
+    &:hover {
+      cursor: pointer;
+      position: relative;
+      outline: 1px solid rgba(50, 50, 89, 0.5);
+
+      &::after {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(50, 50, 89, 0.02);
+      }
+    }
+
+    // Efeito diferenciado para imagens
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    // Efeito diferenciado para imagens internas
+    tr img:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  // FIX: quando tem a classe .row no template
+  .row {
+    display: auto;
+    flex-wrap: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+// Cards
+.big {
+  width: 600px;
+  margin-bottom: 0.5rem;
+}
+
+.sent-file {
+  text-align: center;
+
+  .file-img {
+    position: relative;
+    border: 1px solid #aaa;
+    border-radius: 0.25rem;
+    background: #ddd;
+    color: #666;
+    line-height: 200px;
+  }
+
+  input.file {
+    position: absolute;
+    display: block;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+}
+
+.imageinfo {
+  display: block;
+  margin-left: 25px;
+}
+
+.nb-info {
+  float: left;
+  margin-right: 5px;
+}

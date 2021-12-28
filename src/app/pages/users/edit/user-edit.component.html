@@ -1,0 +1,61 @@
+<nb-card *ngIf="progress">
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="!progress && ( user.id || isNew )" class="card_pai">
+    <nb-card-header>
+        <span *ngIf="isNew">Cadastro de novo usuário</span>
+        <span *ngIf="!isNew">ID {{ user.id }} | {{ user.email }}</span>
+    </nb-card-header>
+    <nb-card-body class="body">
+        <div class="row">
+            <div *ngIf="isNew" class="col col-sm-12 form-group">
+                <label>E-mail <small>(será solicitado para acessar o sistema)</small></label>
+                <input type="email" [(ngModel)]="user.email" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-8 form-group">
+                <label>Nome</label>
+                <input type="text" [(ngModel)]="user.name" class="form-control">
+            </div>
+            <div class="col col-sm-4 form-group">
+                <label>Nível de Acesso</label>
+                <select [(ngModel)]="user.isAdmin" class="form-control" *ngIf="me.id != user.id">
+                    <option [ngValue]="false">Usuário</option>
+                    <option [ngValue]="true">Administrador</option>
+                </select>
+                <input type="text" value="{{ user.isAdmin ? 'Administrador' : 'Usuário'}}" class="form-control" disabled *ngIf="me.id == user.id">
+            </div>
+        </div>
+        <div *ngIf="isAlterPass || isNew" class="row">
+            <div class="col col-sm-6 form-group">
+                <label>Senha</label>
+                <input type="password" [(ngModel)]="password" class="form-control" autocomplete="new-password">
+            </div>
+            <div class="col col-sm-6 form-group">
+                <label>Confirme sua Senha</label>
+                <input type="password" [(ngModel)]="passwordConfirm" class="form-control" autocomplete="new-password">
+            </div>
+        </div>
+
+    </nb-card-body>
+
+    <!-- Rodapé da página com o botão de salvamento -->
+    <nb-card-footer class="menu_buttons">
+        <button *ngIf="!isAlterPass && !isNew" nbButton status="info" (click)="alterPass()">
+            <nb-icon icon="settings-2-outline"></nb-icon> Alterar senha...
+        </button>
+        <div class="float-right">
+            <!-- Botão salvar habilitado apenas quando todos os campos estiverem preenchidos -->
+            <button nbButton status="success" (click)="save()" [disabled]="!user.name || (isNew && !user.email) || (isNew && !password) || (isNew && password != passwordConfirm)">
+                <i class="nb-checkmark"></i> Salvar
+            </button>
+            <button nbButton status="danger" (click)="back()"><i class="nb-close"></i> Cancelar</button>
+        </div>
+    </nb-card-footer>
+</nb-card>

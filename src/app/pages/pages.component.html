@@ -1,0 +1,13 @@
+<ngx-one-column-layout>
+    <nb-menu [items]="menu"></nb-menu>
+    <nb-theme-select>
+        <div class="end">
+            <div class="divisory"></div>
+            <label class="item form-block switch filled">
+                <input type="checkbox" name="dark_mode" [checked]="currentTheme != themes[0]" (click)="toggleTheme()">
+                <span><span class="text">Modo escuro</span></span>
+            </label>
+        </div>
+    </nb-theme-select>
+    <router-outlet></router-outlet>
+</ngx-one-column-layout>

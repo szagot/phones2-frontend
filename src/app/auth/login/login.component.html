@@ -1,0 +1,30 @@
+<div class="background">
+    <div class="fixed-container">
+        <nb-card class="card" [nbSpinner]="loading" nbSpinnerSize="giant" nbSpinnerStatus="info">
+            <nb-card-header>
+                <h1 class="title">E-mail Marketing Bayer</h1>
+            </nb-card-header>
+            <nb-card-body>
+                <div class="login-form">
+                    <p *ngIf="formError" class="error-form border border-danger rounded">{{ formError }}</p>
+                    <div class="form-group">
+                        <label class="label">Email</label>
+                        <input class="form-control border" type="email" required (keyup)="emailVerify()" [(ngModel)]="email" [ngClass]="{'border-danger': emailError, 'border-success': !emailError && email}">
+                        <p *ngIf="emailError" class="caption status-danger ng-star-inserted">{{ emailError }}</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="label">Senha</label>
+                        <input class="form-control border" type="password" required (keyup)="passVerify()" [(ngModel)]="password" [ngClass]="{'border-danger': passError, 'border-success': !passError && password}">
+                        <p *ngIf="passError" class="caption status-danger ng-star-inserted">{{ passError }}</p>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary form-control" [disabled]="!formValidate" (click)="login()">
+                        <nb-icon icon="npm"></nb-icon>
+                        Acessar
+                    </button>
+                    </div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>
