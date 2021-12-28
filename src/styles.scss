@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
 :root {
     --red: rgb(227, 94, 107);
     --text-default: #4a6da7;
+    --background-primary: #673ab7;
+    --background-light: #7640d2;
 }
 
 html,
@@ -12,8 +13,4 @@ body {
 body {
     margin: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-.v-middle {
-    vertical-align: middle;
 }

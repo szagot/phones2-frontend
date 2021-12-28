@@ -1,0 +1,13 @@
+.sidenav {
+    width: 200px;
+    padding-top: 10px;
+    background-color: var(--background-light);
+
+    a {
+        color: #fff;
+
+        .material-icons {
+            padding-right: 10px;
+        }
+    }
+}
