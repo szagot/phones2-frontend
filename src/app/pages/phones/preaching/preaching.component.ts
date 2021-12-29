@@ -1,3 +1,4 @@
+import { CustomRenderComponent } from './custom.render.component';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SearchService } from './../../../@core/services/search.service';
 import { InfoMessages } from './../../../@core/messages/InfoMessages';
@@ -17,11 +18,15 @@ export class PreachingComponent implements OnDestroy {
   settings = {
     hideSubHeader: true,
     rowClassFunction: (row) => {
+      let classValue = '';
       if (row.data.hasRevisit) {
-        return 'revisits';
+        classValue += ' revisits ';
+      }
+      if (row.data.allowCall) {
+        classValue += ' allowcall ';
       }
 
-      return '';
+      return classValue;
     },
     noDataMessage: 'Nenhum contato cadastrado.',
     actions: {
@@ -50,19 +55,10 @@ export class PreachingComponent implements OnDestroy {
       },
       international: {
         title: 'Ligações',
-        type: 'html',
+        type: 'custom',
         sort: false,
         filter: false,
-        valuePrepareFunction: (value, row) => row.allowCall ? `
-          <div class="icon-big">
-              <a href="tel:${value}" class="phone btn btn-info btn-small" data-phone="${row.phone}" target="tel">
-                <i class="nb-phone"></i> Ligar
-              </a>
-              <a href="https://api.whatsapp.com/send?phone=${value}" class="whatsapp btn btn-success btn-small" data-phone="${row.phone}" target="wpp">
-                <i class="nb-whatsapp"></i>
-              </a>
-          </div>
-        ` : `<time datetime="${row.updatedAt}">${row.brazilDate}</time>`,
+        renderComponent: CustomRenderComponent,
       },
     },
   };

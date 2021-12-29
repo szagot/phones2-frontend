@@ -347,14 +347,12 @@
                     display: none !important;
                 }
             }
-            a.ng2-smart-action {
-                width: auto !important;
-                border-right: 0 none !important;
-                i {
-                    margin: 0 0 0 5px;
-                }
-            }
             .icon-big {
+                display: flex;
+                justify-content: space-between;
+                width: 110px;
+                margin: -10px 0;
+
                 i::before {
                     font-size: 1.4rem;
                     vertical-align: middle;
@@ -369,6 +367,33 @@
                     height: 12px;
                     filter: invert(1);
                     margin: 7px auto 0;
+                }
+            }
+            .allowcall {
+                display: none;
+            }
+            .denycall {
+                display: block;
+            }
+            .denycall.icon-big {
+                display: flex;
+            }
+            &.allowcall {
+                .allowcall {
+                    display: block;
+                }
+                .allowcall.icon-big {
+                    display: flex;
+                }
+                .denycall {
+                    display: none;
+                }
+            }
+            a.ng2-smart-action {
+                width: auto !important;
+                border-right: 0 none !important;
+                i {
+                    margin: 0 0 0 5px;
                 }
             }
             a.sort.asc::after {
