@@ -1214,7 +1214,7 @@ a.cke_dialog_ui_button,
 [nbButton].size-small {
     height: 30px !important;
     padding: 0 10px !important;
-    font-size: 0.6em !important;
+    font-size: 0.6rem !important;
     line-height: 30px !important;
 }
 
@@ -1227,7 +1227,7 @@ a.cke_dialog_ui_button,
     cursor: default !important;
     height: 30px !important;
     padding: 0 15px !important;
-    font-size: 0.6em !important;
+    font-size: 0.6rem !important;
     line-height: 30px !important;
     border-radius: 10px !important;
     white-space: nowrap !important;
@@ -1954,7 +1954,7 @@ nb-context-menu .menu-item:last-child a {
 .cards .row,
 nb-card .row {
     align-items: stretch;
-    margin: 0 -10px !important;
+    margin: 0px !important;
 }
 
 nb-card .row [class*='col-'] {

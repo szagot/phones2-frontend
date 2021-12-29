@@ -2,6 +2,11 @@
     <nb-card-header>
         <nb-icon icon="phone-call-outline"></nb-icon>
         Contatos
+        <button nbButton status="{{onlyCall ? 'success' : 'danger'}}" size="small" class="float-right" (click)="setOnlyCall()">
+            <nb-icon *ngIf="!onlyCall" icon="phone-outline"></nb-icon>
+            <nb-icon *ngIf="onlyCall" icon="phone-off-outline"></nb-icon>
+            {{onlyCall ? 'Mostrar Todos' : 'Apenas Ligação'}}
+        </button>
     </nb-card-header>
 
     <nb-card-body>

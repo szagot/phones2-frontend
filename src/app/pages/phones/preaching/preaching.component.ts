@@ -56,10 +56,10 @@ export class PreachingComponent implements OnDestroy {
         valuePrepareFunction: (value, row) => row.allowCall ? `
           <div class="icon-big">
               <a href="tel:${value}" class="phone btn btn-info btn-small" data-phone="${row.phone}" target="tel">
-                  <i class="nb-phone"></i> Ligar
+                <i class="nb-phone"></i> Ligar
               </a>
               <a href="https://api.whatsapp.com/send?phone=${value}" class="whatsapp btn btn-success btn-small" data-phone="${row.phone}" target="wpp">
-              <i class="nb-whatsapp"></i>
+                <i class="nb-whatsapp"></i>
               </a>
           </div>
         ` : `<time datetime="${row.updatedAt}">${row.brazilDate}</time>`,
@@ -68,6 +68,7 @@ export class PreachingComponent implements OnDestroy {
   };
 
   progress: number = 0;
+  onlyCall: boolean = false;
 
   source: LocalDataSource = new LocalDataSource();
 
@@ -78,6 +79,7 @@ export class PreachingComponent implements OnDestroy {
     private infoMessage: InfoMessages,
     private searchService: SearchService,
   ) {
+    this.onlyCall = window.localStorage.getItem('onlyCall') === '1';
     this.updateTableData();
   }
 
@@ -86,13 +88,25 @@ export class PreachingComponent implements OnDestroy {
   }
 
   updateTableData() {
-    // Pega os dados do serviço do template
-    this.service.getAll().subscribe(data => {
-      // Carrega os dados dos usuários
-      this.source.load(data);
-      this.source.setPaging(1, 9);
-      this.searchService.activateSearch(this.source, ['phone', 'formatted', 'international'], 'Telefone...');
-    });
+    (this.onlyCall ? this.service.getCall() : this.service.getAll())
+
+      // Pega os dados do serviço do template
+      .subscribe(data => {
+        // Carrega os dados dos usuários
+        this.source.load(data);
+        this.source.setPaging(1, 9);
+        this.searchService.activateSearch(this.source, ['phone', 'formatted', 'international'], 'Telefone...');
+      });
+  }
+
+  setOnlyCall() {
+    this.onlyCall = !this.onlyCall;
+    if (this.onlyCall) {
+      window.localStorage.setItem('onlyCall', '1');
+    } else {
+      window.localStorage.removeItem('onlyCall');
+    }
+    this.updateTableData();
   }
 
   /**
@@ -102,7 +116,6 @@ export class PreachingComponent implements OnDestroy {
   onCustom(event, dialog: TemplateRef<any>) {
     // É pra editar?
     if (event.action === 'edit') {
-      console.log(event.data.phone);
       this.router.navigateByUrl('/pages/phones/edit/' + event.data.phone);
       return false;
     }
@@ -118,7 +131,7 @@ export class PreachingComponent implements OnDestroy {
   * Apaga o contato
   * @param id ID do contato
   */
-   onDelete(id: number) {
+  onDelete(id: number) {
     this.progress = 1;
     this.service.delete(id).pipe(
       map((event: any) => {
