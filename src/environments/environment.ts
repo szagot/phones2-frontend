@@ -50,4 +50,45 @@ export const environment = {
   // Pega as regras do usuário atual
   getRules: '/roles/me',
 
+  /**
+   * Contact / Campo e Revisitas
+   */
+
+  // GET Pega todos os contatos
+  getContacts: '/contacts',
+
+  // GET Pega todos os contatos passivos de ligação
+  getContactsToCall: '/contacts/call',
+
+  // GET Pega as revisitas
+  getRevisits: '/contacts/revisits',
+
+  // GET Pega um contato pelo seu ID
+  getContact: '/contacts/',
+
+  // DELETE Apaga um contato pelo seu ID
+  delContact: '/contacts/',
+
+  // POST Cadastra um contato
+  createContact: '/contacts',
+
+  // PATCH Altera um contato pelo seu ID
+  alterContact: '/contacts/',
+
+  /**
+   * Notes / Observações dos contatos
+   */
+
+  // GET Pega todas as observações de um contato pelo ID do contato
+  getNotes: '/notes/',
+
+  // DELETE Apaga uma observação pelo seu ID
+  delNote: '/notes/',
+
+  // POST Cadastra uma observação pelo ID do contato
+  createNote: '/notes/',
+
+  // PATCH Altera uma observação pelo seu ID
+  alterNote: '/notes/',
+
 };
