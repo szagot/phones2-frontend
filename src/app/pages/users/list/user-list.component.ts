@@ -35,11 +35,11 @@ export class UserListComponent implements OnDestroy {
       custom: [
         {
           name: 'edit',
-          title: '<i class="nb-edit edit" title="Alterar Template"></i>',
+          title: '<i class="nb-edit edit" title="Alterar Usuário"></i>',
         },
         {
           name: 'delete',
-          title: '<i class="nb-trash delete" title="Apagar Template"></i>',
+          title: '<i class="nb-trash delete" title="Apagar Usuário"></i>',
         },
       ],
     },
