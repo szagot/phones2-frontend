@@ -70,9 +70,6 @@ export class UserListComponent implements OnDestroy {
     },
   };
 
-  isRejected: boolean = false;
-  rejectedText: string[] = [];
-  emailTeste: string[] = [];
   progress: number = 0;
 
   source: LocalDataSource = new LocalDataSource();

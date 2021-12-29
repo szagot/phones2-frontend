@@ -304,83 +304,90 @@
             margin-right: 5px;
         }
     }
-    ngx-smart-table {
-        ng2-smart-table {
-            &.hidden-first {
-                th:first-child,
-                td:first-child {
-                    display: none;
-                }
-            }
-            .ng2-smart-actions {
-                height: auto !important;
-            }
-            ng2-st-tbody-custom {
-                display: flex;
-                height: 100%;
-            }
-            tr:nth-child(2n).awaiting {
-                background: nb-theme(background-tables-waiting-one);
-            }
-            tr:nth-child(2n).reproved {
-                background: nb-theme(background-tables-reproved-one);
-            }
-            tr {
-                // Força a quebra de linhas em situações de URL ou Path
-                .description {
-                    word-break: break-all;
-                }
-                // Proprio usuário / Ou sem permissão pra remover
-                &.me,
-                &.not_removal {
-                    .delete {
-                        display: none;
-                    }
-                }
-                // Sem permissão pra editar
-                &.not_editor {
-                    .edit {
-                        display: none;
-                    }
-                }
-                // Sem permissão pra shotsar
-                &.not_shots {
-                    .test {
-                        display: none;
-                    }
-                    .aprove {
-                        display: none;
-                    }
-                }
-                &.reproved {
-                    // Não permite a edição de templates em aprovação
-                    .aprove {
-                        display: none;
-                    }
-                }
-                &.approval {
-                    // Não permite a aprovação de templates já aprovados
-                    .aprove {
-                        display: none;
-                    }
-                    .edit {
-                        display: none;
-                    }
-                }
-                a.ng2-smart-action {
-                    width: auto !important;
-                    border-right: 0 none !important;
-                    i {
-                        margin: 0 0 0 5px;
-                    }
-                }
+
+    ng2-smart-table {
+        &.hidden-first {
+            th:first-child,
+            td:first-child {
+                display: none;
             }
         }
-        .form-control.search {
-            max-width: 300px;
-            margin-bottom: 10px;
+        .ng2-smart-actions {
+            height: auto !important;
+        }
+        ng2-st-tbody-custom {
+            display: flex;
+            height: 100%;
+        }
+        tr:nth-child(2n).awaiting {
+            background: nb-theme(background-tables-waiting-one);
+        }
+        tr:nth-child(2n).reproved {
+            background: nb-theme(background-tables-reproved-one);
+        }
+        tr {
+            td,
+            th {
+                &:last-child,
+                &:last-child * {
+                    max-width: 40px;
+                }
+            }
+            // Força a quebra de linhas em situações de URL ou Path
+            .description {
+                word-break: break-all;
+            }
+            // Proprio usuário / Ou sem permissão pra remover
+            &.revisits {
+                .ng-star-inserted {
+                    color: var(--PrimaryColor-100);
+                    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+                }
+                .delete {
+                    display: none !important;
+                }
+            }
+            a.ng2-smart-action {
+                width: auto !important;
+                border-right: 0 none !important;
+                i {
+                    margin: 0 0 0 5px;
+                }
+            }
+            .icon-big {
+                i::before {
+                    font-size: 1.4rem;
+                    vertical-align: middle;
+                }
+
+                .nb-whatsapp::before {
+                    content: '';
+                    background: url('/assets/images/whatsapp.svg') no-repeat center center;
+                    background-size: 100% 100%;
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    filter: invert(1);
+                    margin: 7px auto 0;
+                }
+            }
+            a.sort.asc::after {
+                right: 1.5rem !important;
+            }
+        }
+        .ng2-smart-pagination-nav {
+            margin-top: 1rem !important;
+
+            .pagination {
+                margin-bottom: 0 !important;
+            }
         }
     }
+    .form-control.search {
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+
     // CKEditor
     .cke_dialog {
         position: absolute !important;
@@ -408,6 +415,6 @@
     }
 }
 
- .nb-theme-default .color-default {
-     color: #616161 !important;
- }
+.nb-theme-default .color-default {
+    color: #616161 !important;
+}

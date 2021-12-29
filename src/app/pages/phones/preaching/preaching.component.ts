@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { NbDialogService } from '@nebular/theme';
 import { ContactService } from './../../../@core/services/contact.service';
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'ngx-preaching',
@@ -43,43 +45,28 @@ export class PreachingComponent implements OnDestroy {
       formatted: {
         title: 'Telefone',
         type: 'text',
-        sort: true,
         sortDirection: 'asc',
         filter: true,
-      },
-      updatedAt: {
-        title: 'Data Contato',
-        type: 'html',
-        filter: true,
-        valuePrepareFunction: (value, row) => `<time datetime="${value}">${row.brazilDate}</time>`,
-      },
-      hasRevisit: {
-        title: 'Revisita?',
-        type: 'text',
-        filter: false,
-        valuePrepareFunction: (value) => value ? 'Sim' : 'Não',
       },
       international: {
         title: 'Ligações',
         type: 'html',
+        sort: false,
         filter: false,
-        valuePrepareFunction: (value, row) => `
+        valuePrepareFunction: (value, row) => row.allowCall ? `
           <div class="icon-big">
               <a href="tel:${value}" class="phone btn btn-info btn-small" data-phone="${row.phone}" target="tel">
                   <i class="nb-phone"></i> Ligar
               </a>
               <a href="https://api.whatsapp.com/send?phone=${value}" class="whatsapp btn btn-success btn-small" data-phone="${row.phone}" target="wpp">
-              <i class="nb-volume-high"></i>
+              <i class="nb-whatsapp"></i>
               </a>
           </div>
-        `,
+        ` : `<time datetime="${row.updatedAt}">${row.brazilDate}</time>`,
       },
     },
   };
 
-  isRejected: boolean = false;
-  rejectedText: string[] = [];
-  emailTeste: string[] = [];
   progress: number = 0;
 
   source: LocalDataSource = new LocalDataSource();
@@ -103,7 +90,8 @@ export class PreachingComponent implements OnDestroy {
     this.service.getAll().subscribe(data => {
       // Carrega os dados dos usuários
       this.source.load(data);
-      this.searchService.activateSearch(this.source, ['name', 'email'], 'Telefone...');
+      this.source.setPaging(1, 9);
+      this.searchService.activateSearch(this.source, ['phone', 'formatted', 'international'], 'Telefone...');
     });
   }
 
@@ -114,14 +102,40 @@ export class PreachingComponent implements OnDestroy {
   onCustom(event, dialog: TemplateRef<any>) {
     // É pra editar?
     if (event.action === 'edit') {
-      this.router.navigateByUrl('/pages/users/edit/' + event.data.id);
+      console.log(event.data.phone);
+      this.router.navigateByUrl('/pages/phones/edit/' + event.data.phone);
       return false;
     }
 
     // É pra deletar?
     if (event.action === 'delete') {
-      this.dialogService.open(dialog, { context: event.data.id });
+      this.dialogService.open(dialog, { context: event.data.phone });
       return false;
     }
+  }
+
+  /**
+  * Apaga o contato
+  * @param id ID do contato
+  */
+   onDelete(id: number) {
+    this.progress = 1;
+    this.service.delete(id).pipe(
+      map((event: any) => {
+        if (event.type === this.service.inProgress) {
+          this.progress = this.service.getProgress(event);
+        } else if (event.type === this.service.complete) {
+          this.infoMessage.sucess('Telefone ' + id + ' apagado com sucesso!');
+          // Se apagou, atualiza os dados
+          this.updateTableData();
+          this.progress = 0;
+        }
+      }),
+      catchError((err: any) => {
+        this.progress = 0;
+        this.infoMessage.danger(err);
+        return throwError(err.message);
+      }),
+    ).toPromise();
   }
 }

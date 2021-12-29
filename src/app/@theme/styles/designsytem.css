@@ -1215,7 +1215,7 @@ a.cke_dialog_ui_button,
     height: 30px !important;
     padding: 0 10px !important;
     font-size: 0.6em !important;
-    line-height: 32px !important;
+    line-height: 30px !important;
 }
 
 .cke_dialog_ui_button {
@@ -1439,7 +1439,7 @@ body.nb-theme-cosmic #styles .title-section {
 /* Cores */
 
 #styles .colors .item {
-    font-size: 0.75rem;;
+    font-size: 0.75rem;
     text-transform: uppercase;
 }
 
@@ -1867,13 +1867,13 @@ nb-context-menu .menu-item:last-child a {
 }
 
 .table thead th {
-    padding: 15px;
+    padding: 10px 15px;
     font-weight: bold;
 }
 
 .table tbody td,
 .list-block .list-item {
-    padding: 15px;
+    padding: 10px 15px;
     vertical-align: middle;
     border-bottom: 1px solid #e4e4e4;
     -webkit-transition: all 0.3s ease;
@@ -1957,7 +1957,7 @@ nb-card .row {
     margin: 0 -10px !important;
 }
 
-nb-card .row [class*="col-"] {
+nb-card .row [class*='col-'] {
     padding-right: 10px !important;
     padding-left: 10px !important;
 }
@@ -1983,12 +1983,13 @@ nb-card-footer {
     font-size: 1.6em !important;
     font-weight: normal !important;
     font-family: 'Nunito', 'Helvetica', sans-serif !important;
-    padding: 0 10px 10px !important;
+    padding: 0 10px 5px !important;
     border: 0 none !important;
 }
 
 nb-card-header nb-icon {
     margin-top: -2px;
+    margin-right: 10px !important;
 }
 
 nb-card-body {
@@ -2178,7 +2179,7 @@ ng2-smart-table th,
 ng2-smart-table td {
     border: 0 none !important;
     border-bottom: 1px solid #e4e4e4 !important;
-    padding: 15px !important;
+    padding: 10px 15px !important;
     vertical-align: middle !important;
     min-height: 70px !important;
     line-height: 20px !important;
@@ -2225,7 +2226,8 @@ ng2-smart-table thead * {
 
 /* Tablet */
 @media (max-width: 700px) {
-    html, nb-card {
+    html,
+    nb-card {
         font-size: 14px !important;
     }
     .h-menu .user .name {
@@ -2244,7 +2246,8 @@ ng2-smart-table thead * {
 
 /* Celular */
 @media (max-width: 540px) {
-    html, nb-card {
+    html,
+    nb-card {
         font-size: 12px !important;
     }
 
@@ -2264,5 +2267,19 @@ ng2-smart-table thead * {
 
     nb-layout .layout .layout-container .content .columns nb-layout-column {
         padding: 5px !important;
+    }
+
+    nb-card nb-card-body {
+        padding: 0px !important;
+    }
+
+    nb-card-header,
+    nb-card-footer {
+        padding: 0px 0px 5px !important;
+    }
+
+    ng2-smart-table td,
+    ng2-smart-table th {
+        padding: 10px 0 !important;
     }
 }

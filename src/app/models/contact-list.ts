@@ -5,6 +5,7 @@ export class ContactList {
     international: string;
     updatedAt: string;
     brazilDate: string;
+    allowCall: boolean;
     hasRevisit: boolean;
 
     load(json: any): boolean {
@@ -18,6 +19,7 @@ export class ContactList {
             this.international = json.international;
             this.updatedAt = json.updatedAt;
             this.brazilDate = json.brazilDate;
+            this.allowCall = json.allowCall;
             this.hasRevisit = json.hasRevisit;
         } catch (err) {
             return false;
@@ -33,6 +35,7 @@ export class ContactList {
             this.international = '';
             this.updatedAt = '';
             this.brazilDate = '';
+            this.allowCall = false;
             this.hasRevisit = false;
         } catch (err) {
             return false;
