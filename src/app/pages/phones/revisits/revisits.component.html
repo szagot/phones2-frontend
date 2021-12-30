@@ -1,1 +1,22 @@
-<p>revisits works!</p>
+<nb-card>
+    <nb-card-header>
+        <nb-icon icon="calendar-outline"></nb-icon>
+        Revisitas
+    </nb-card-header>
+
+    <nb-card-body>
+        <div *ngIf="!progress">
+            <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event)">
+            </ng2-smart-table>
+        </div>
+
+        <nb-card *ngIf="progress">
+            <nb-card-body>
+                Apagando contato...
+                <div class="progress">
+                    <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>

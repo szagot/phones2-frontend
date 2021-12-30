@@ -25,13 +25,19 @@ export class CustomRenderComponent implements ViewCell, OnInit {
         return this.sanitized.bypassSecurityTrustHtml(value);
     }
 
+    /**
+     * Envia pra edição após abrir o APP de ligação
+     */
     phone(phone) {
         window.open('tel:' + phone);
         this.router.navigateByUrl('/pages/phones/edit/' + phone);
         return false;
     }
 
-    wpp(phone) {
+    /**
+     * Envia pra edição após abrir o APP do whats
+     */
+     wpp(phone) {
         window.open('https://api.whatsapp.com/send?phone=' + phone);
         this.router.navigateByUrl('/pages/phones/edit/' + phone);
         return false;

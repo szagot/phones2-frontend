@@ -60,6 +60,14 @@ export class ContactService {
     }
 
     /**
+     * Libera um contato
+     * @param id
+     */
+    freeContact(id: number): Observable<any> {
+        return this.http.get<any>(environment.endpoint + environment.freeContact + id);
+    }
+
+    /**
      * Pega as notas de um contato
      * @param id ID do contato
      */

@@ -66,6 +66,9 @@ export const environment = {
   // GET Pega um contato pelo seu ID
   getContact: '/contacts/',
 
+  // GET Libera um contato para uso de outro usuário
+  freeContact: '/contacts/free/',
+
   // DELETE Apaga um contato pelo seu ID
   delContact: '/contacts/',
 

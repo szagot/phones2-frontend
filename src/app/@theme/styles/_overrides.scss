@@ -350,7 +350,7 @@
             .icon-big {
                 display: flex;
                 justify-content: space-between;
-                width: 110px;
+                width: 130px;
                 margin: -10px 0;
 
                 i::before {
@@ -367,6 +367,16 @@
                     height: 12px;
                     filter: invert(1);
                     margin: 7px auto 0;
+                }
+            }
+            @media (max-width: 700px) {
+                .icon-big {
+                    width: 120px;
+                }
+            }
+            @media (max-width: 540px) {
+                .icon-big {
+                    width: 110px;
                 }
             }
             .allowcall {
