@@ -1,3 +1,4 @@
+import { EditComponent } from './phones/edit/edit.component';
 import { RevisitsComponent } from './phones/revisits/revisits.component';
 import { PreachingComponent } from './phones/preaching/preaching.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -22,6 +23,10 @@ const routes: Routes = [{
     {
       path: 'phones/revisits',
       component: RevisitsComponent,
+    },
+    {
+      path: 'phones/edit/:id',
+      component: EditComponent,
     },
     {
       path: 'users',

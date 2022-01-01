@@ -1,3 +1,4 @@
+import { UrlService } from 'app/@core/services/url.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
@@ -17,11 +18,12 @@ export class AuthGuard implements CanActivate {
     constructor(
         private router: Router,
         private http: HttpClient,
+        private urlService: UrlService,
     ) { }
 
     canActivate() {
         // Pegando a última url válida
-        this.lastUrl = window.location.pathname.match(/login/i) ? '/' : window.location.pathname;
+        this.lastUrl = this.urlService.getLastUrl().match(/login/i) ? '/' : this.urlService.getLastUrl();
 
         const isLogged = this.isLogged();
         if (!isLogged) {

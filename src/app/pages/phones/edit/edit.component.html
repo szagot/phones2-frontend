@@ -1,0 +1,19 @@
+<nb-card>
+    <nb-card-header>
+        <nb-icon icon="edit-2-outline"></nb-icon>
+        {{contact.formatted}}
+    </nb-card-header>
+
+    <nb-card-body>
+       <button ngButton class="btn btn-primary" (click)="back()">Voltar</button>
+
+        <nb-card *ngIf="progress">
+            <nb-card-body>
+                Gravando contato...
+                <div class="progress">
+                    <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </nb-card-body>
+</nb-card>

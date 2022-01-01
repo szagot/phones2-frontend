@@ -12,6 +12,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { PreachingComponent } from './phones/preaching/preaching.component';
 import { RevisitsComponent } from './phones/revisits/revisits.component';
+import { EditComponent } from './phones/edit/edit.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { RevisitsComponent } from './phones/revisits/revisits.component';
     PagesComponent,
     PreachingComponent,
     RevisitsComponent,
+    EditComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
