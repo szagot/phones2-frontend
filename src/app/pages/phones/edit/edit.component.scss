@@ -1,0 +1,44 @@
+.progress {
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    display: flex;
+    font-size: 1.2rem;
+    height: 2rem;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    align-items: center;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin: 0.5rem;
+
+    &:first-child {
+        margin-left: 0;
+    }
+
+    i {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+}
+
+textarea {
+    height: 60px !important;
+}
+
+.notes {
+    .note {
+        margin: 10px 10px 20px !important;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 0, 0, 0.6);
+        border-radius: 5px;
+    }
+}

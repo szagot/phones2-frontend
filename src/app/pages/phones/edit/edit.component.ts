@@ -24,7 +24,7 @@ export class EditComponent implements OnInit {
     private urlService: UrlService,
   ) {
     this.router.events;
-    this.lastUrl = urlService.getLastUrl().match(/phones/i) ? urlService.getLastUrl() : '/';
+    this.lastUrl = this.urlService.getLastUrl().match(/phones/i) ? this.urlService.getLastUrl() : '/';
   }
 
   ngOnInit(): void {

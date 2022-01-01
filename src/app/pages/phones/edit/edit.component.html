@@ -1,11 +1,64 @@
-<nb-card>
+<nb-card *ngIf="progress">
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="!progress" class="card_pai">
     <nb-card-header>
         <nb-icon icon="edit-2-outline"></nb-icon>
         {{contact.formatted}}
     </nb-card-header>
 
-    <nb-card-body>
-       <button ngButton class="btn btn-primary" (click)="back()">Voltar</button>
+    <nb-card-body class="body">
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Morador</label>
+                <input type="text" [(ngModel)]="contact.resident" class="form-control">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Publicador</label>
+                <input type="text" [(ngModel)]="contact.publisher" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label>Ligar de</label>
+                <select [(ngModel)]="contact.dayOfWeek" value="{{contact.dayOfWeekText}}" class="form-control">
+                    <option [ngValue]="2">Segunda</option>
+                    <option [ngValue]="3">Terça</option>
+                    <option [ngValue]="4">Quarta</option>
+                    <option [ngValue]="5">Quinta</option>
+                    <option [ngValue]="6">Sexta</option>
+                    <option [ngValue]="7">Sábado</option>
+                    <option [ngValue]="1">Domingo</option>
+                </select>
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Período</label>
+                <select [(ngModel)]="contact.period" value="{{contact.periodText}}" class="form-control">
+                    <option [ngValue]="1">Manhã</option>
+                    <option [ngValue]="2">Tarde</option>
+                    <option [ngValue]="3">Noite</option>
+                </select>
+            </div>
+        </div>
+        <div class="notes">
+            <div *ngFor="let note of contact.notes" class="row note">
+                <div class="col-sm-4 form-group">
+                    <label>Data</label>
+                    <input type="datetime-local" [(ngModel)]="note.dateContact" class="form-control">
+                </div>
+                <div class="col-sm-8 form-group">
+                    <label>Obs</label>
+                    <textarea [(ngModel)]="note.text" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <button nbButton status="default" size="small" (click)="back()">Voltar</button>
 
         <nb-card *ngIf="progress">
             <nb-card-body>

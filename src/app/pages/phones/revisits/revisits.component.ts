@@ -44,7 +44,7 @@ export class RevisitsComponent implements OnDestroy {
         type: 'html',
         filter: true,
         valuePrepareFunction: (value, row) => `
-          ${row.publisher}<br>
+          ${row.publisher || '[Não Informado]'}<br>
           <time class="denycall" datetime="${value}">${row.brazilDate}</time>
         `,
       },
