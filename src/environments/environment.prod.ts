@@ -6,7 +6,7 @@
 export const environment = {
   production: true,
 
-  endpoint: 'https://preaching-service.000webhostapp.com/phones',
+  endpoint: '/phones',
 
   /**
    * Login
