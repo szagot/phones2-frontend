@@ -1,9 +1,9 @@
 <div class="allowcall icon-big">
-    <a href="tel:{{value}}" class="phone btn btn-info btn-small" target="tel" (click)="phone(rowData.international)">
+    <a href="tel:{{value}}" class="phone btn btn-info btn-small" target="tel" (click)="phone(value)">
         <i class="nb-phone"></i> Ligar
     </a>
     <a href="https://api.whatsapp.com/send?phone={{value}}" class="whatsapp btn btn-success btn-small" target="wpp"
-        (click)="wpp(rowData.international)">
+        (click)="wpp(value)">
         <i class="nb-whatsapp"></i>
     </a>
 </div>
