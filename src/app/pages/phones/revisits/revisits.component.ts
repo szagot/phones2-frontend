@@ -1,3 +1,4 @@
+import { UrlService } from 'app/@core/services/url.service';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SearchService } from './../../../@core/services/search.service';
 import { Router } from '@angular/router';
@@ -58,7 +59,9 @@ export class RevisitsComponent implements OnDestroy {
     private service: ContactService,
     private router: Router,
     private searchService: SearchService,
+    private urlService: UrlService,
   ) {
+    urlService.setOrigin(router.getCurrentNavigation().extractedUrl);
     this.updateTableData();
   }
 

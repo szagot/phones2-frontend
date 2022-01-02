@@ -1,3 +1,4 @@
+import { UrlService } from 'app/@core/services/url.service';
 import { CustomRenderComponent } from './custom.render.component';
 import { LocalDataSource } from 'ng2-smart-table';
 import { SearchService } from './../../../@core/services/search.service';
@@ -74,7 +75,9 @@ export class PreachingComponent implements OnDestroy {
     private router: Router,
     private infoMessage: InfoMessages,
     private searchService: SearchService,
+    private urlService: UrlService,
   ) {
+    urlService.setOrigin(router.getCurrentNavigation().extractedUrl);
     this.onlyCall = window.localStorage.getItem('onlyCall') === '1';
     this.updateTableData();
   }

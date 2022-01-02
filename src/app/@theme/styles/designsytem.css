@@ -1209,6 +1209,13 @@ a.cke_dialog_ui_button,
     text-align: center !important;
 }
 
+.nb-theme-default .btn,
+.nb-theme-default [nbButton],
+.nb-theme-default a.cke_dialog_ui_button,
+.nb-theme-default .pill {
+    background-color: #888e94 !important;
+}
+
 .btn.btn-small,
 a.cke_dialog_ui_button,
 [nbButton].size-small {
@@ -1305,18 +1312,18 @@ a.cke_dialog_ui_button.cke_dialog_ui_button_cancel::after,
 
 .btn.btn-info,
 [nbButton].status-info {
-    background-color: var(--PrimaryColor-100) !important;
-    border-color: var(--PrimaryColor-100) !important;
+    background-color: var(--AdditionalColorOne-100) !important;
+    border-color: var(--AdditionalColorOne-100) !important;
 }
 
 .btn.btn-info::before,
 [nbButton].status-info::before {
-    background-color: var(--PrimaryColor-50);
+    background-color: var(--AdditionalColorOne-50);
 }
 
 .btn.btn-info::after,
 [nbButton].status-info::after {
-    background-color: var(--PrimaryColor-75);
+    background-color: var(--AdditionalColorOne-75);
 }
 
 /* Danger */
@@ -1613,12 +1620,15 @@ body.nb-theme-cosmic #styles .title-section {
     position: relative;
     cursor: pointer;
     display: inline-block;
-    margin-left: 30px;
-    padding-left: 30px;
     padding-right: 60px;
-    border-left: 1px solid currentColor;
     vertical-align: middle;
     height: 20px;
+}
+
+.h-menu .user.search .name{
+    border-left: 1px solid currentColor;
+    margin-left: 30px;
+    padding-left: 30px;
 }
 
 .h-menu .user .name .user-action {
@@ -1628,7 +1638,7 @@ body.nb-theme-cosmic #styles .title-section {
 .h-menu .user-container::after {
     content: '˅';
     position: absolute;
-    right: -30px;
+    right: -20px;
     top: 5px;
     font: bold 1.125rem monospace;
 }
@@ -2231,13 +2241,9 @@ ng2-smart-table thead * {
         font-size: 14px !important;
     }
 
-    .h-menu .user .name {
+    .h-menu .user.search .name {
         margin-left: 15px;
         padding-left: 15px;
-    }
-
-    .h-menu .search .user .name {
-        padding-left: 0;
     }
 
     .h-menu .search .user .user-name {
@@ -2261,15 +2267,15 @@ ng2-smart-table thead * {
     }
 
     .h-menu .search .user-container::after {
-        right: -15px;
+        right: -10px;
     }
 
     .h-menu .user .user-name {
         margin-top: 3px;
-        min-width: 60px
+        min-width: 70px;
     }
 
-    .h-menu .search .user .name {
+    .h-menu .user.search .name {
         margin-left: 0;
         border-left: 0 none;
         padding-right: 30px;

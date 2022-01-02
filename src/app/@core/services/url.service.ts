@@ -22,4 +22,12 @@ export class UrlService {
     public getLastUrl() {
         return this.lastUrl;
     }
+
+    public setOrigin(page) {
+        window.localStorage.setItem('origin', page);
+    }
+
+    public getOrigin() {
+        return window.localStorage.getItem('origin');
+    }
 }

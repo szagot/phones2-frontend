@@ -35,10 +35,39 @@ textarea {
 
 .notes {
     .note {
+        position: relative;
         margin: 10px 10px 20px !important;
         padding: 5px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border: 1px solid rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.3);
         border-radius: 5px;
+
+        &:first-child {
+            margin-top: 0 !important;
+        }
+
+        .delete {
+            position: absolute !important;
+            top: -5px;
+            right: -5px;
+            padding: 0 5px !important;
+            height: 20px !important;
+            text-align: center;
+        }
+    }
+}
+
+.button-group {
+    margin: 10px 10px 0;
+    padding-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+
+    .whatsapp {
+        margin: 0.5rem;
+    }
+
+    .back {
+        float: right;
+        margin-right: 0;
     }
 }

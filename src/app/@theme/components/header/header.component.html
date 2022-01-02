@@ -15,9 +15,6 @@
     </div>
 
     <div class="header-container user {{getSearchService().active ? 'search' : ''}}">
-        <a (click)="navigateHelp()" href="#" class="help">
-            <nb-icon icon="question-mark-circle"></nb-icon>
-        </a>
         <nb-actions size="small" class="name">
             <nb-action class="user-action">
                 <nb-user [nbContextMenu]="userMenu" [name]="user?.name" picture="false"></nb-user>

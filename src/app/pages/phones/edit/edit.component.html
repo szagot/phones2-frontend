@@ -1,12 +1,45 @@
 <nb-card *ngIf="progress">
+    <nb-card-header>
+        Salvando contato...
+    </nb-card-header>
     <nb-card-body>
         <div class="progress">
             <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
         </div>
     </nb-card-body>
 </nb-card>
+<nb-card *ngIf="progressNote">
+    <nb-card-header>
+        Salvando Notas...
+    </nb-card-header>
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progressNote}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
+<nb-card *ngIf="progressNewNote">
+    <nb-card-header>
+        Salvando nota nova...
+    </nb-card-header>
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progressNewNote}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
+<nb-card *ngIf="progressDel">
+    <nb-card-header>
+        Apagando Nota...
+    </nb-card-header>
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progressDel}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
 
-<nb-card *ngIf="!progress" class="card_pai">
+<nb-card *ngIf="!progress && !progressNote && !progressNewNote && !progressDel" class="card_pai">
     <nb-card-header>
         <nb-icon icon="edit-2-outline"></nb-icon>
         {{contact.formatted}}
@@ -45,8 +78,25 @@
                 </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-12 form-group">
+            <button *ngIf="!addObs" nbButton status="primary" size="small" (click)="addNote()" class="form-control">Adicionar uma
+                Observação</button>
+            </div>
+        </div>
         <div class="notes">
+            <div *ngIf="addObs" class="row note">
+                <div class="col-sm-4 form-group">
+                    <label>Data</label>
+                    <input type="datetime-local" [(ngModel)]="newNote.dateContact" class="form-control">
+                </div>
+                <div class="col-sm-8 form-group">
+                    <label>Obs</label>
+                    <textarea [(ngModel)]="newNote.text" class="form-control" rows="2"></textarea>
+                </div>
+            </div>
             <div *ngFor="let note of contact.notes" class="row note">
+                <button nbButton status="danger" size="small" (click)="delete(note.id, dialog_remove)" class="delete">X</button>
                 <div class="col-sm-4 form-group">
                     <label>Data</label>
                     <input type="datetime-local" [(ngModel)]="note.dateContact" class="form-control">
@@ -58,15 +108,40 @@
             </div>
         </div>
 
-        <button nbButton status="default" size="small" (click)="back()">Voltar</button>
-
-        <nb-card *ngIf="progress">
-            <nb-card-body>
-                Gravando contato...
-                <div class="progress">
-                    <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
-                </div>
-            </nb-card-body>
-        </nb-card>
+        <div class="button-group">
+            <button nbButton status="primary" size="small" (click)="save()">Salvar</button>
+            <a href="tel:{{contact.international}}" class="phone btn btn-info btn-small" target="tel"
+                (click)="phone(contact.international)">
+                <i class="nb-phone"></i> Ligar
+            </a>
+            <a href="https://api.whatsapp.com/send?phone={{contact.international}}"
+                class="whatsapp btn btn-success btn-small" target="wpp" (click)="wpp(contact.international)">
+                <i class="nb-whatsapp"></i>
+            </a>
+            <button nbButton status="default" size="small" (click)="back()" class="back">Voltar</button>
+        </div>       
     </nb-card-body>
+    
+    <ng-template #dialog_remove let-data let-ref="dialogRef">
+        <nb-card>
+            <nb-card-header>
+                <nb-icon icon="info"></nb-icon>
+                <strong>Apagar Nota</strong>
+            </nb-card-header>
+            <nb-card-body class="fundo">
+                <p>
+                    Tem certeza que deseja remover essa nota?
+                </p>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton status="danger" size="small" (click)="onDelete(data); ref.close()">
+          <nb-icon icon="checkmark"></nb-icon> Remover
+        </button>
+                <button nbButton status="info" size="small" class="float-right" (click)="ref.close()">
+          <nb-icon icon="close"></nb-icon> Cancelar
+        </button>
+            </nb-card-footer>
+        </nb-card>
+    </ng-template>
+
 </nb-card>
