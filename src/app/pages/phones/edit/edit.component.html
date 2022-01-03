@@ -59,22 +59,22 @@
         <div class="row">
             <div class="col-md-6 form-group">
                 <label>Ligar de</label>
-                <select [(ngModel)]="contact.dayOfWeek" value="{{contact.dayOfWeekText}}" class="form-control">
-                    <option [ngValue]="2">Segunda</option>
-                    <option [ngValue]="3">Terça</option>
-                    <option [ngValue]="4">Quarta</option>
-                    <option [ngValue]="5">Quinta</option>
-                    <option [ngValue]="6">Sexta</option>
-                    <option [ngValue]="7">Sábado</option>
-                    <option [ngValue]="1">Domingo</option>
+                <select [(ngModel)]="contact.dayOfWeek" class="form-control">
+                    <option [ngValue]="2" [selected]="contact.dayOfWeek==2">Segunda</option>
+                    <option [ngValue]="3" [selected]="contact.dayOfWeek==3">Terça</option>
+                    <option [ngValue]="4" [selected]="contact.dayOfWeek==4">Quarta</option>
+                    <option [ngValue]="5" [selected]="contact.dayOfWeek==5">Quinta</option>
+                    <option [ngValue]="6" [selected]="contact.dayOfWeek==6">Sexta</option>
+                    <option [ngValue]="7" [selected]="contact.dayOfWeek==7">Sábado</option>
+                    <option [ngValue]="1" [selected]="contact.dayOfWeek==1">Domingo</option>
                 </select>
             </div>
             <div class="col-md-6 form-group">
                 <label>Período</label>
-                <select [(ngModel)]="contact.period" value="{{contact.periodText}}" class="form-control">
-                    <option [ngValue]="1">Manhã</option>
-                    <option [ngValue]="2">Tarde</option>
-                    <option [ngValue]="3">Noite</option>
+                <select [(ngModel)]="contact.period" class="form-control">
+                    <option [ngValue]="1" [selected]="contact.period==1">Manhã</option>
+                    <option [ngValue]="2" [selected]="contact.period==2">Tarde</option>
+                    <option [ngValue]="3" [selected]="contact.period==3">Noite</option>
                 </select>
             </div>
         </div>

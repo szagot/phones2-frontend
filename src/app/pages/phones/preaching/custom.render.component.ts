@@ -45,6 +45,9 @@ export class CustomRenderComponent implements ViewCell, OnInit {
         return false;
     }
 
+    /**
+     * Atualiza a data do contato e vai para a edição
+     */
     private update(phone) {
         const id = phone.replace('+55', '');
         this.service.updateContact(id).subscribe(() => { });

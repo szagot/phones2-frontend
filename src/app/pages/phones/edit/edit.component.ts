@@ -182,15 +182,15 @@ export class EditComponent implements OnInit {
    */
   verifySaves() {
     setTimeout(() => {
+      if (this.finishNotes >= this.qtNotes && this.progressNote > 0) {
+        this.infoMessage.sucess('Notas salvas com sucesso!');
+        this.progressNote = 0;
+      }
+
       if (this.progress === 0 && this.progressNote === 0 && this.progressNewNote === 0) {
         this.loadData();
       } else {
         this.verifySaves();
-      }
-
-      if (this.finishNotes >= this.qtNotes && this.progressNote > 0) {
-        this.infoMessage.sucess('Notas salvas com sucesso!');
-        this.progressNote = 0;
       }
     }, 100);
   }
@@ -261,6 +261,9 @@ export class EditComponent implements OnInit {
     return false;
   }
 
+  /**
+   * Atualiza a data do contato e vai para a edição
+   */
   private update(phone) {
     const id = phone.replace('+55', '');
     this.service.updateContact(id).subscribe(() => { });
