@@ -112,7 +112,7 @@ export class PreachingComponent implements OnDestroy {
     * Ações dos botões personalizados
     * @param event Evento do click
     */
-  onCustom(event, dialog: TemplateRef<any>) {
+  onCustom(event, dialog: TemplateRef<any>, dialogRevisits: TemplateRef<any>) {
     // É pra editar?
     if (event.action === 'edit') {
       this.router.navigateByUrl('/pages/phones/edit/' + event.data.phone);
@@ -121,7 +121,11 @@ export class PreachingComponent implements OnDestroy {
 
     // É pra deletar?
     if (event.action === 'delete') {
-      this.dialogService.open(dialog, { context: event.data.phone });
+      if (event.data.hasRevisit) {
+        this.dialogService.open(dialogRevisits, { context: event.data.phone });
+      } else {
+        this.dialogService.open(dialog, { context: event.data.phone });
+      }
       return false;
     }
   }

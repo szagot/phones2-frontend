@@ -2,7 +2,8 @@
     <nb-card-header>
         <nb-icon icon="phone-call-outline"></nb-icon>
         Contatos
-        <button nbButton status="{{onlyCall ? 'success' : 'danger'}}" size="small" class="float-right" (click)="setOnlyCall()">
+        <button nbButton status="{{onlyCall ? 'success' : 'danger'}}" size="small" class="float-right"
+            (click)="setOnlyCall()">
             <nb-icon *ngIf="!onlyCall" icon="phone-outline"></nb-icon>
             <nb-icon *ngIf="onlyCall" icon="phone-off-outline"></nb-icon>
             {{onlyCall ? 'Mostrar Todos' : 'Apenas Ligação'}}
@@ -11,7 +12,8 @@
 
     <nb-card-body>
         <div *ngIf="!progress">
-            <ng2-smart-table [settings]="settings" [source]="source" (custom)="onCustom($event, dialog_remove)">
+            <ng2-smart-table [settings]="settings" [source]="source"
+                (custom)="onCustom($event, dialog_remove, dialog_remove_revisits)">
             </ng2-smart-table>
         </div>
 
@@ -38,11 +40,36 @@
             </nb-card-body>
             <nb-card-footer>
                 <button nbButton status="danger" size="small" (click)="onDelete(data); ref.close()">
-          <nb-icon icon="checkmark"></nb-icon> Remover
-        </button>
+                    <nb-icon icon="checkmark"></nb-icon> Remover
+                </button>
                 <button nbButton status="info" size="small" class="float-right" (click)="ref.close()">
-          <nb-icon icon="close"></nb-icon> Cancelar
-        </button>
+                    <nb-icon icon="close"></nb-icon> Cancelar
+                </button>
+            </nb-card-footer>
+        </nb-card>
+    </ng-template>
+
+    <ng-template #dialog_remove_revisits let-data let-ref="dialogRef">
+        <nb-card>
+            <nb-card-header>
+                <nb-icon icon="info"></nb-icon>
+                <strong>Apagar Revisita</strong>
+            </nb-card-header>
+            <nb-card-body class="fundo">
+                <p>
+                    Tem certeza que deseja remover o contato<br> do <strong>telefone {{ data }}</strong>?
+                </p>
+                <p class="danger">
+                    ATENÇÃO! Esse contato é uma revisita!
+                </p>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton status="danger" size="small" (click)="onDelete(data); ref.close()">
+                    <nb-icon icon="checkmark"></nb-icon> Remover mesmo assim
+                </button>
+                <button nbButton status="info" size="small" class="float-right" (click)="ref.close()">
+                    <nb-icon icon="close"></nb-icon> Cancelar
+                </button>
             </nb-card-footer>
         </nb-card>
     </ng-template>
