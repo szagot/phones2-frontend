@@ -21,4 +21,9 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'calendar-outline',
     link: '/pages/phones/revisits',
   },
+  {
+    title: 'Gerar...',
+    icon: 'plus-circle-outline',
+    link: '/pages/phones/new',
+  },
 ];

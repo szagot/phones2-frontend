@@ -1,0 +1,82 @@
+<nb-card *ngIf="progress">
+    <nb-card-header>
+        Criando contato(s)...
+    </nb-card-header>
+    <nb-card-body>
+        <div class="progress">
+            <div class="progress-bar" [style.width]="progress + '%'">{{progress}}%</div>
+        </div>
+    </nb-card-body>
+</nb-card>
+
+<nb-card *ngIf="!progress" class="card_pai">
+    <nb-card-header>
+        <nb-icon icon="plus-circle-outline"></nb-icon>
+        Gerar Novos Contatos
+    </nb-card-header>
+
+    <nb-card-body class="body">
+        <div class="row">
+            <div class="col-sm-2 form-group">
+                <label>DDD</label>
+                <input type="number" [(ngModel)]="ddd" class="form-control" min="10" max="99">
+            </div>
+            <div class="col-sm-4 form-group">
+                <label>Prefixo*</label>
+                <input type="number" [(ngModel)]="prefix" class="form-control" min="1000" max="99999">
+            </div>
+            <div class="col-sm-3 form-group">
+                <label>Sufixo (De)*</label>
+                <input type="number" [(ngModel)]="sufixStart" class="form-control" min="1000" max="9999">
+            </div>
+            <div class="col-sm-3 form-group">
+                <label>Sufixo (Até)</label>
+                <input type="number" [(ngModel)]="sufixEnd" class="form-control" min="1000" max="9999">
+            </div>
+        </div>
+
+        <div class="info">
+            <p>Para criar apenas 1 contato, informe o <b>DDD</b>, o <b>prefixo</b> e o <b>sufixo (de)</b>.</p>
+            <p>Para criar uma sequencia, informe também o <b>sufixo (até)</b>. Ele deve ser maior que o <b>sufixo
+                    (de)</b>.</p>
+        </div>
+
+        <div class="button-group">
+            <button nbButton status="primary" size="small" (click)="generate(dialog_generate)"
+                [disabled]="!dataIsValid()">
+                <nb-icon icon="refresh-outline"></nb-icon>
+                Gerar
+            </button>
+        </div>
+    </nb-card-body>
+
+    <ng-template #dialog_generate let-data let-ref="dialogRef">
+        <nb-card>
+            <nb-card-header>
+                <nb-icon icon="info"></nb-icon>
+                <strong>Gerar contato(s)</strong>
+            </nb-card-header>
+            <nb-card-body class="fundo">
+                <p *ngIf="sufixEnd > sufixStart">
+                    Serão gerados os contatos de<br>
+                    <strong>({{ddd}}) {{prefix}}-{{sufixStart}}</strong> até<br>
+                    <strong>({{ddd}}) {{prefix}}-{{sufixEnd}}</strong>.
+                </p>
+                <p *ngIf="!sufixEnd || sufixEnd == sufixStart">
+                    Será gerado o contato
+                    <strong>({{ddd}}) {{prefix}}-{{sufixStart}}</strong>.
+                </p>
+                <p>Deseja prosseguir?</p>
+            </nb-card-body>
+            <nb-card-footer>
+                <button nbButton status="success" size="small" (click)="onGenerate(); ref.close()">
+                    <nb-icon icon="checkmark"></nb-icon> Gerar
+                </button>
+                <button nbButton status="danger" size="small" class="float-right" (click)="ref.close()">
+                    <nb-icon icon="close"></nb-icon> Cancelar
+                </button>
+            </nb-card-footer>
+        </nb-card>
+    </ng-template>
+
+</nb-card>

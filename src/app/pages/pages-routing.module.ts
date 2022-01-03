@@ -1,3 +1,4 @@
+import { NewComponent } from './phones/new/new.component';
 import { EditComponent } from './phones/edit/edit.component';
 import { RevisitsComponent } from './phones/revisits/revisits.component';
 import { PreachingComponent } from './phones/preaching/preaching.component';
@@ -6,16 +7,11 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
-import { HelpComponent } from './help/help.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
-    {
-      path: 'help',
-      component: HelpComponent,
-    },
     {
       path: 'phones/preaching',
       component: PreachingComponent,
@@ -27,6 +23,10 @@ const routes: Routes = [{
     {
       path: 'phones/edit/:id',
       component: EditComponent,
+    },
+    {
+      path: 'phones/new',
+      component: NewComponent,
     },
     {
       path: 'users',

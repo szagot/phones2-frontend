@@ -7,12 +7,12 @@ import { NbCardModule, NbMenuModule, NbButtonModule, NbTreeGridModule, NbIconMod
 
 import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
-import { HelpModule } from './help/help.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { PreachingComponent } from './phones/preaching/preaching.component';
 import { RevisitsComponent } from './phones/revisits/revisits.component';
 import { EditComponent } from './phones/edit/edit.component';
+import { NewComponent } from './phones/new/new.component';
 
 @NgModule({
   imports: [
@@ -20,7 +20,6 @@ import { EditComponent } from './phones/edit/edit.component';
     ThemeModule,
     NbMenuModule,
     MiscellaneousModule,
-    HelpModule,
     NbButtonModule,
     NbEvaIconsModule,
     NbCardModule,
@@ -36,6 +35,7 @@ import { EditComponent } from './phones/edit/edit.component';
     PreachingComponent,
     RevisitsComponent,
     EditComponent,
+    NewComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

@@ -29,6 +29,8 @@ export class RoleGuard implements CanActivate {
 
         '/pages/phones/preaching': this.ROLE_USER,
         '/pages/phones/revisits': this.ROLE_USER,
+        '/pages/phones/edit': this.ROLE_USER,
+        '/pages/phones/new': this.ROLE_USER,
     };
 
     // Rotas ignoradas
