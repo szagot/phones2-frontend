@@ -69,6 +69,9 @@ export const environment = {
   // GET Libera um contato para uso de outro usuário
   freeContact: '/contacts/free/',
 
+  // GET Atualiza um contato para não aparecer em contacts/call
+  updateContact: '/contacts/update/',
+
   // DELETE Apaga um contato pelo seu ID
   delContact: '/contacts/',
 

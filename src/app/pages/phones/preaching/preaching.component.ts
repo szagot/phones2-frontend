@@ -77,7 +77,7 @@ export class PreachingComponent implements OnDestroy {
     private searchService: SearchService,
     private urlService: UrlService,
   ) {
-    urlService.setOrigin(router.getCurrentNavigation().extractedUrl);
+    this.urlService.setOrigin(router.getCurrentNavigation().extractedUrl);
     this.onlyCall = window.localStorage.getItem('onlyCall') === '1';
     this.updateTableData();
   }

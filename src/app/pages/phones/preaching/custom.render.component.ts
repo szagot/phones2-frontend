@@ -1,3 +1,4 @@
+import { ContactService } from './../../../@core/services/contact.service';
 import { Router } from '@angular/router';
 import { Component, Input, OnInit } from '@angular/core';
 import { ViewCell } from 'ng2-smart-table';
@@ -19,6 +20,7 @@ export class CustomRenderComponent implements ViewCell, OnInit {
     constructor(
         private sanitized: DomSanitizer,
         private router: Router,
+        private service: ContactService,
     ) { }
 
     safeHtml(value) {
@@ -30,16 +32,22 @@ export class CustomRenderComponent implements ViewCell, OnInit {
      */
     phone(phone) {
         window.open('tel:' + phone);
-        this.router.navigateByUrl('/pages/phones/edit/' + phone);
+        this.update(phone);
         return false;
     }
 
     /**
      * Envia pra edição após abrir o APP do whats
      */
-     wpp(phone) {
+    wpp(phone) {
         window.open('https://api.whatsapp.com/send?phone=' + phone);
-        this.router.navigateByUrl('/pages/phones/edit/' + phone);
+        this.update(phone);
         return false;
+    }
+
+    private update(phone) {
+        const id = phone.replace('+55', '');
+        this.service.updateContact(id).subscribe(() => { });
+        this.router.navigateByUrl('/pages/phones/edit/' + id);
     }
 }

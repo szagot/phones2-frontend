@@ -68,6 +68,14 @@ export class ContactService {
     }
 
     /**
+     * Atualiza a data de um contato
+     * @param id
+     */
+    updateContact(id: number): Observable<any> {
+        return this.http.get<any>(environment.endpoint + environment.updateContact + id);
+    }
+
+    /**
      * Pega as notas de um contato
      * @param id ID do contato
      */

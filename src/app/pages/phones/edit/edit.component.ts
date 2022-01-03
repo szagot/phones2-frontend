@@ -238,6 +238,7 @@ export class EditComponent implements OnInit {
    */
   back() {
     // Zera o template antes de sair
+    this.service.freeContact(this.contact.id).subscribe(() => { });
     this.contact.empty();
     this.router.navigateByUrl(this.lastUrl);
   }
@@ -247,6 +248,7 @@ export class EditComponent implements OnInit {
    */
   phone(phone) {
     window.open('tel:' + phone);
+    this.update(phone);
     return false;
   }
 
@@ -255,6 +257,13 @@ export class EditComponent implements OnInit {
    */
   wpp(phone) {
     window.open('https://api.whatsapp.com/send?phone=' + phone);
+    this.update(phone);
     return false;
+  }
+
+  private update(phone) {
+    const id = phone.replace('+55', '');
+    this.service.updateContact(id).subscribe(() => { });
+    this.router.navigateByUrl('/pages/phones/edit/' + id);
   }
 }
