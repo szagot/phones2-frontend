@@ -8,7 +8,7 @@ import { throwError } from 'rxjs';
 @Component({
   selector: 'ngx-new',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.scss']
+  styleUrls: ['./new.component.scss'],
 })
 export class NewComponent implements OnInit {
 
