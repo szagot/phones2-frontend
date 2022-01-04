@@ -6,13 +6,22 @@ import { LocalDataSource } from 'ng2-smart-table';
 })
 export class SearchService {
 
-    search: String = '';
-    placeholder: String = '';
+    search: string = '';
+    placeholder: string = '';
     active: Boolean = false;
     source: LocalDataSource = new LocalDataSource();
     fields: Array<String> = [];
+    pages: any = {};
+    actualPage: string = '';
 
-    constructor() { }
+    constructor() {
+        Object.entries(window.sessionStorage).forEach((entry) => {
+            const [key, value] = entry;
+            if (key.match(/\.search$/)) {
+                this.pages[key.replace('.search', '')] = value;
+            }
+        });
+    }
 
     /**
      * Ativa a Busca
@@ -20,8 +29,9 @@ export class SearchService {
      * @param fields Nome dos campos a serem pesquisados
      * @param placeholder Texto do placeholder
      */
-    activateSearch(source: LocalDataSource, fields: Array<String>, placeholder?: String) {
-        this.search = '';
+    activateSearch(actualPage: string, source: LocalDataSource, fields: Array<String>, placeholder?: string) {
+        this.actualPage = actualPage;
+        this.search = this.pages[this.actualPage] || '';
         this.active = true;
         this.placeholder = placeholder;
         this.source = source;
@@ -32,6 +42,7 @@ export class SearchService {
      * Desativa a pesquisa
      */
     inactivateSearch() {
+        this.actualPage = '';
         this.search = '';
         this.active = false;
         this.placeholder = '';
@@ -59,5 +70,18 @@ export class SearchService {
             // Se não houver nada no campo, limpa o filtro
             this.source.setFilter([]);
         }
+    }
+
+    /**
+     * Salva o texto da busca no storage
+     */
+    setDefaultText() {
+        const index: string = this.actualPage + '.search';
+        if (this.search) {
+            window.sessionStorage.setItem(index, this.search);
+        } else {
+            window.sessionStorage.removeItem(index);
+        }
+        this.pages[this.actualPage] = this.search;
     }
 }

@@ -94,7 +94,8 @@ export class PreachingComponent implements OnDestroy {
         // Carrega os dados dos usuários
         this.source.load(data);
         this.source.setPaging(1, 9);
-        this.searchService.activateSearch(this.source, ['phone', 'formatted', 'international'], 'Telefone...');
+        this.searchService.activateSearch('preaching', this.source, ['phone', 'formatted', 'international'], 'Telefone...');
+        this.searchService.onSearch();
       });
   }
 

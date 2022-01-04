@@ -52,7 +52,6 @@ export class Contact {
             }
 
         } catch (err) {
-            console.error(err);
             return false;
         }
 

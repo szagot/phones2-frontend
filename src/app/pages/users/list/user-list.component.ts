@@ -94,7 +94,8 @@ export class UserListComponent implements OnDestroy {
     this.service.getAll().subscribe(data => {
       // Carrega os dados dos usuários
       this.source.load(data);
-      this.searchService.activateSearch(this.source, ['name', 'email'], 'Nome ou Email...');
+      this.searchService.activateSearch('users', this.source, ['name', 'email'], 'Nome ou Email...');
+      this.searchService.onSearch();
     });
 
     // Pega os dados do usuário atual

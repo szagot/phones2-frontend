@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ElementRef } from '@angular/core';
 import { NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { LayoutService } from '../../../@core/utils';
@@ -43,7 +43,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private authService: AuthGuard,
     private router: Router,
     private searchService: SearchService,
+    private eRef: ElementRef,
   ) {
+  }
+
+  /**
+   * Escuta os clicks para poder fechar o menu se estiver aberto
+   */
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.sidebarService.collapse('menu-sidebar');
+      this.layoutService.changeLayoutSize();
+    }
   }
 
   ngOnInit() {
@@ -100,6 +112,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    */
   getSearchValue(event: Event) {
     this.searchService.search = (event.target as HTMLInputElement).value;
+    this.searchService.setDefaultText();
     this.searchService.onSearch();
   }
 
