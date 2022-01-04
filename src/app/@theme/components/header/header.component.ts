@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   userPictureOnly: boolean = true;
   user: User = new User();
+  menuIsOpened: boolean = false;
 
   currentTheme = 'cosmic';
 
@@ -52,7 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
    */
   @HostListener('document:click', ['$event'])
   clickout(event) {
-    if (!this.eRef.nativeElement.contains(event.target)) {
+    if (!this.eRef.nativeElement.contains(event.target) && this.menuIsOpened) {
       this.sidebarService.collapse('menu-sidebar');
       this.layoutService.changeLayoutSize();
     }
@@ -124,19 +125,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleSidebar(): boolean {
+    this.menuIsOpened = true;
     this.sidebarService.toggle(false, 'menu-sidebar');
     this.layoutService.changeLayoutSize();
 
-    return false;
-  }
-
-  navigateHome() {
-    this.menuService.navigateHome();
-    return false;
-  }
-
-  navigateHelp() {
-    this.router.navigate(['/pages/help']);
     return false;
   }
 }

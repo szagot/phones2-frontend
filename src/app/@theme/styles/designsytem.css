@@ -1625,7 +1625,7 @@ body.nb-theme-cosmic #styles .title-section {
     height: 20px;
 }
 
-.h-menu .user.search .name{
+.h-menu .user.search .name {
     border-left: 1px solid currentColor;
     margin-left: 30px;
     padding-left: 30px;
@@ -1636,11 +1636,11 @@ body.nb-theme-cosmic #styles .title-section {
 }
 
 .h-menu .user-container::after {
-    content: '˅';
+    content: '\25be';
     position: absolute;
-    right: -20px;
-    top: 5px;
-    font: bold 1.125rem monospace;
+    right: -15px;
+    top: -2px;
+    font: bold 1.3rem 'Courier New', monospace;
 }
 
 .h-menu .user .name .text {
@@ -2126,6 +2126,7 @@ nb-dialog-container nb-card nb-card-body {
 
 nb-dialog-container nb-card nb-card-body p {
     margin: 0 0 15px !important;
+    overflow: visible !important;
 }
 
 nb-dialog-container nb-card nb-card-body p:last-child {
@@ -2266,8 +2267,15 @@ ng2-smart-table thead * {
         display: none !important;
     }
 
+    nb-layout .user-container .info-container {
+        position: relative;
+        left: -10px;
+    }
+
     .h-menu .search .user-container::after {
-        right: -10px;
+        right: -5px;
+        top: 0;
+        font-size: 1.5rem;
     }
 
     .h-menu .user .user-name {
