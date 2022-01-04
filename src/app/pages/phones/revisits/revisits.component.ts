@@ -74,7 +74,7 @@ export class RevisitsComponent implements OnDestroy {
     this.service.getRevisits().subscribe(data => {
       // Carrega os dados dos usuários
       this.source.load(data);
-      this.source.setPaging(1, 8);
+      // this.source.setPaging(1, 8);
       this.searchService.activateSearch('revisits', this.source, ['phone', 'formatted', 'resident', 'publisher'], 'Telefone, Morador ou Publicador...');
       this.searchService.onSearch();
     });
