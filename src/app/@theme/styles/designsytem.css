@@ -2122,6 +2122,7 @@ nb-dialog-container nb-card nb-card-body > p {
 
 nb-dialog-container nb-card nb-card-body {
     padding: 0 !important;
+    overflow: visible !important;
 }
 
 nb-dialog-container nb-card nb-card-body p {
