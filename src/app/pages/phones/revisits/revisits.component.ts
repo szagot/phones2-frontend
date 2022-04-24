@@ -47,6 +47,7 @@ export class RevisitsComponent implements OnDestroy {
         valuePrepareFunction: (value, row) => `
           ${row.publisher || '[Não Informado]'}<br>
           <time class="denycall" datetime="${value}">${row.brazilDate}</time>
+          Ligar de ${row.dayOfWeek || '[Não Informado]'}
         `,
       },
     },
@@ -75,7 +76,7 @@ export class RevisitsComponent implements OnDestroy {
       // Carrega os dados dos usuários
       this.source.load(data);
       // this.source.setPaging(1, 8);
-      this.searchService.activateSearch('revisits', this.source, ['phone', 'formatted', 'resident', 'publisher'], 'Telefone, Morador ou Publicador...');
+      this.searchService.activateSearch('revisits', this.source, ['phone', 'formatted', 'resident', 'publisher', 'dayOfWeek'], 'Telefone, Morador ou Publicador...');
       this.searchService.onSearch();
     });
   }

@@ -4,6 +4,9 @@
 
 ---
 
+## Versão correta do node.js
+`v14.16.1`
+
 ## Para execução local, faça:
 `$ npm start`
 
