@@ -27,11 +27,11 @@
             </div>
             <div class="col-sm-3 form-group">
                 <label>Sufixo (De)*</label>
-                <input type="number" [(ngModel)]="sufixStart" class="form-control" min="1000" max="9999">
+                <input type="number" [(ngModel)]="sufixStart" class="form-control" min="0" max="9999" value="0000">
             </div>
             <div class="col-sm-3 form-group">
                 <label>Sufixo (Até)</label>
-                <input type="number" [(ngModel)]="sufixEnd" class="form-control" min="1000" max="9999">
+                <input type="number" [(ngModel)]="sufixEnd" class="form-control" min="0" max="9999">
             </div>
         </div>
 
@@ -59,12 +59,12 @@
             <nb-card-body class="fundo">
                 <p *ngIf="sufixEnd > sufixStart">
                     Serão gerados os contatos de<br>
-                    <strong>({{ddd}}) {{prefix}}-{{sufixStart}}</strong> até<br>
-                    <strong>({{ddd}}) {{prefix}}-{{sufixEnd}}</strong>.
+                    <strong>({{ddd}}) {{prefix}}-{{pad(sufixStart,4)}}</strong> até<br>
+                    <strong>({{ddd}}) {{prefix}}-{{pad(sufixEnd,4)}}</strong>.
                 </p>
                 <p *ngIf="!sufixEnd || sufixEnd == sufixStart">
                     Será gerado o contato
-                    <strong>({{ddd}}) {{prefix}}-{{sufixStart}}</strong>.
+                    <strong>({{ddd}}) {{prefix}}-{{pad(sufixStart,4)}}</strong>.
                 </p>
                 <p>Deseja prosseguir?</p>
             </nb-card-body>

@@ -31,7 +31,7 @@ export class NewComponent implements OnInit {
     return (
       this.ddd >= 10 && this.ddd <= 99 &&
       this.prefix >= 1000 && this.prefix <= 99999 &&
-      this.sufixStart >= 1000 && this.sufixStart <= 9999 &&
+      this.sufixStart >= 0 && this.sufixStart <= 9999 && this.sufixStart != null &&
       ((this.sufixEnd >= this.sufixStart && this.sufixEnd <= 9999) || !this.sufixEnd)
     );
   }
@@ -71,4 +71,9 @@ export class NewComponent implements OnInit {
     }
   }
 
+  pad(num: number, size: number): string {
+    let s = num + '';
+    while (s.length < size) s = '0' + s;
+    return s;
+  }
 }
